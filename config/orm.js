@@ -7,58 +7,60 @@ const connection = require('./connection');
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 
-const orm = {
-    selectAll: function (table) {
-        let query = 'SELECT * FROM ??';
-        connection.query(query, [table], function (err, result) {
-            if (err) throw err;
-            // console.log(result);
-            cb(result);
-        });
-    },
-    insertOne: function (
-        table,
-        colOne,
-        colTwo,
-        colThree,
-        valOfColOne,
-        valOfColTwo,
-        valOfColThree
-    ) {
-        let query = 'INSERT INTO ?? (??, ??, ??) ';
-        query += `VALUES (?, '?', ?),`;
-        connection.query(
-            query,
-            [
-                table,
-                colOne,
-                colTwo,
-                colThree,
-                valOfColOne,
-                valOfColTwo,
-                valOfColThree,
-            ],
-            function (err, result) {
-                if (err) throw err;
-                // console.log(result);
-                cb(result);
-            }
-        );
-    },
-    updateOne: function () {
-        let query = `UPDATE ??
-                      SET ?? = ?
-                      WHERE id = ${placeholder}`;
-        connection.query(query, [table, column, valOfCol], function (
-            err,
-            result
-        ) {
-            if (err) throw err;
-            // console.log(result);
-            cb(result);
-        });
-    },
-};
+const orm = 'hi';
+
+// {
+//     selectAll: function (table) {
+//         let query = 'SELECT * FROM ??';
+//         connection.query(query, [table], function (err, result) {
+//             if (err) throw err;
+//             // console.log(result);
+//             cb(result);
+//         });
+//     },
+//     insertOne: function (
+//         table,
+//         colOne,
+//         colTwo,
+//         colThree,
+//         valOfColOne,
+//         valOfColTwo,
+//         valOfColThree
+//     ) {
+//         let query = 'INSERT INTO ?? (??, ??, ??) ';
+//         query += `VALUES (?, '?', ?),`;
+//         connection.query(
+//             query,
+//             [
+//                 table,
+//                 colOne,
+//                 colTwo,
+//                 colThree,
+//                 valOfColOne,
+//                 valOfColTwo,
+//                 valOfColThree,
+//             ],
+//             function (err, result) {
+//                 if (err) throw err;
+//                 // console.log(result);
+//                 cb(result);
+//             }
+//         );
+//     },
+//     updateOne: function () {
+//         let query = `UPDATE ??
+//                       SET ?? = ?
+//                       WHERE id = ${placeholder}`;
+//         connection.query(query, [table, column, valOfCol], function (
+//             err,
+//             result
+//         ) {
+//             if (err) throw err;
+//             // console.log(result);
+//             cb(result);
+//         });
+//     },
+// };
 
 module.exports = orm;
 
