@@ -2,7 +2,6 @@ const express    = require('express');
 const exphbs     = require('express-handlebars');
 const bodyParser = require('body-parser');
 const routes     = require('./controllers/tickets_controller');
-const connection = require('./config/connection');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,10 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  // Temporary placeholder to view handlebars but will eventually be replaced with functional express routes
-  res.render('index')
-})
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`Handlebars Ticket App is now listening on local host: ${PORT}`)

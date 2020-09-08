@@ -1,6 +1,5 @@
 const connection = require('./connection');
 
-
 // Object Relational Mapper (ORM)
 
 // The ?? signs are for swapping out table or column names
@@ -8,152 +7,55 @@ const connection = require('./connection');
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 
-const orm = 'hi';
-// {
-//     selectAll: function (table, cb) {
-//         let query = 'SELECT * FROM ??';
-//         connection.query(query, [table], function (err, result) {
-//             if (err) throw err;
-//             // console.log(result);
-//             cb(result);
-//         });
-//     },
-    // insertOne: function (
-    //     table,
-    //     colOne,
-    //     colTwo,
-    //     colThree,
-    //     valOfColOne,
-    //     valOfColTwo,
-    //     valOfColThree
-    // ) {
-    //     let query = 'INSERT INTO ?? (??, ??, ??) ';
-    //     query += `VALUES (?, '?', ?),`;
-    //     connection.query(
-    //         query,
-    //         [
-    //             table,
-    //             colOne,
-    //             colTwo,
-    //             colThree,
-    //             valOfColOne,
-    //             valOfColTwo,
-    //             valOfColThree,
-    //         ],
-    //         function (err, result) {
-    //             if (err) throw err;
-    //             // console.log(result);
-    //             cb(result);
-    //         }
-    //     );
-    // },
-    // updateOne: function () {
-    //     let query = `UPDATE ??
-    //                   SET ?? = ?
-    //                   WHERE id = ${placeholder}`;
-    //     connection.query(query, [table, column, valOfCol], function (
-    //         err,
-    //         result
-    //     ) {
-    //         if (err) throw err;
-    //         // console.log(result);
-    //         cb(result);
-    //     });
-    // },
-// };
+const orm = {
+    selectAll: function (table, cb) {
+        let query = 'SELECT * FROM ??';
+        connection.query(query, [table], function (err, result) {
+            if (err) throw err;
+            cb(result)
+        });
+    },
+    insertOne: function (
+        table,
+        colOne,
+        colTwo,
+        colThree,
+        valOfColOne,
+        valOfColTwo,
+        valOfColThree,
+        cb
+    ) {
+        let query = 'INSERT INTO ?? (??, ??, ??) ';
+        query += `VALUES (?, '?', ?),`;
+        connection.query(
+            query,
+            [
+                table,
+                colOne,
+                colTwo,
+                colThree,
+                valOfColOne,
+                valOfColTwo,
+                valOfColThree,
+            ],
+            function (err, result) {
+                if (err) throw err;
+                cb(result);
+            }
+        );
+    },
+    updateOne: function (table, column, valOfCol, cb) {
+        let query = `UPDATE ??
+                      SET ?? = ?
+                      WHERE id = ${placeholder}`;
+        connection.query(query, [table, column, valOfCol], function (
+            err,
+            result
+        ) {
+            if (err) throw err;
+            cb(result);
+        });
+    },
+};
 
 module.exports = orm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var orm = {
-//     selectWhere: function (tableInput, colToSearch, valOfCol) {
-//         var queryString = 'SELECT * FROM ?? WHERE ?? = ?';
-//         connection.query(
-//             queryString,
-//             [tableInput, colToSearch, valOfCol],
-//             function (err, result) {
-//                 if (err) throw err;
-//                 console.log(result);
-//             }
-//         );
-//     },
-//     selectAndOrder: function (whatToSelect, table, orderCol) {
-//         var queryString = 'SELECT ?? FROM ?? ORDER BY ?? DESC';
-//         console.log(queryString);
-//         connection.query(
-//             queryString,
-//             [whatToSelect, table, orderCol],
-//             function (err, result) {
-//                 if (err) throw err;
-//                 console.log(result);
-//             }
-//         );
-//     },
-//     findWhoHasMost: function (
-//         tableOneCol,
-//         tableTwoForeignKey,
-//         tableOne,
-//         tableTwo
-//     ) {
-//         var queryString =
-//             'SELECT ??, COUNT(??) AS count FROM ?? LEFT JOIN ?? ON ??.??= ??.id GROUP BY ?? ORDER BY count DESC LIMIT 1';
-
-//         connection.query(
-//             queryString,
-//             [
-//                 tableOneCol,
-//                 tableOneCol,
-//                 tableOne,
-//                 tableTwo,
-//                 tableTwo,
-//                 tableTwoForeignKey,
-//                 tableOne,
-//                 tableOneCol,
-//             ],
-//             function (err, result) {
-//                 if (err) throw err;
-//                 console.log(result);
-//             }
-//         );
-//     },
-// };
-
-
-
-
-
-
-
-
-
-
-
-// const testconnect = () => {
-//   const query = `SELECT * FROM ticket`;
-//   connection.query(query, (err, results, field) => {
-//       if (err) throw err;
-//       console.log(results);
-//       return `<p>${results}</p>`;
-//     })
-// }

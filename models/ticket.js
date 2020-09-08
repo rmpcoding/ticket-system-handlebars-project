@@ -1,11 +1,16 @@
 const orm = require('../config/orm');
 
-// orm.selectAll('ticket', function(result) {
-//     let data = result;
-//     console.log(data);
-// });
+let table = 'ticket';
 
-// orm.insertOne('ticket', 'id', 'ticket_name', 'completed', 'DEFAULT'); 
+const ticket = {
+    selectAll: function (cb) {
+        orm.selectAll(table, function (res) {
+            cb(res);
+        });
+    },
+};
+
+// orm.insertOne('ticket', 'id', 'ticket_name', 'completed', 'DEFAULT');
 // Still need to insert values.
 // Need to assign three variables
 // Those variables will change every time user inputs data
@@ -13,4 +18,4 @@ const orm = require('../config/orm');
 
 // orm.updateOne()
 
-module.exports = orm;
+module.exports = ticket;
