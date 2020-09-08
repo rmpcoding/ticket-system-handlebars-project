@@ -1,10 +1,19 @@
 {{!-- testing handlebars by way of hello world --}}
 <p class="paragraph">hello Handlebars.js world</p>
 
-<ul>
+<ul class="unordered-list">
   {{#each tickets}}
-    <p>{{this.id}}</p>
-    <p>{{this.ticket_name}}</p>
-    <p>If you see a "0", then that means false: <span>{{this.completed}}</span></p>
+  <p>{{this.id}}</p>
+  <p>{{this.ticket_name}}</p>
+  <p>If you see a "0", then that means false: <span>{{this.completed}}</span></p>
   {{/each}}
 </ul>
+
+
+<form class="form" action="/public/ticket.js" method="post">
+  <div class="form-group">
+    <label class="label" for="describe-issue">Describe Issue:</label>
+  </div>
+    <input class="form-input" type="text" id="describe-issue" name="describe-issue" /><br /><br />
+    <input class="btn btn-primary btn-submit" type="submit" value="Submit" />
+</form>

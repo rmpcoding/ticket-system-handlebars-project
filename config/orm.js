@@ -12,7 +12,7 @@ const orm = {
         let query = 'SELECT * FROM ??';
         connection.query(query, [table], function (err, result) {
             if (err) throw err;
-            cb(result)
+            cb(result);
         });
     },
     insertOne: function (
