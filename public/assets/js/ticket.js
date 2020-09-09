@@ -4,19 +4,28 @@
 
 const testData = 'https://reqres.in/api/users';
 const submitBtn = document.querySelector('.btn-submit');
+const form = document.querySelector('.form');
 
-submitBtn.addEventListener('click', function (event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // Attempting to serve backend controller routes using fetch api
+    // Creates new Form Data from submit event
+    const formData = new FormData(event.target);
+
+    // Reveals submit value while creating key/value pairs into object
+    let object = {};
+    formData.forEach((value, key) => {
+        object[key] = value;
+    });
+
+    // Utilize fetch method to POST data from form to controller routes api
     fetch('/api/tickets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            data: 'insert name here',
-        }),
+        body: JSON.stringify(object),
     })
         .then((res) => {
+          console.log(res)
             return res.json();
         })
         .then((data) => {
