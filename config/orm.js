@@ -18,17 +18,15 @@ const orm = {
     },
     insertOne: function (
         table,
-        colOne,
-        colTwo,
-        valOfColOne,
-        valOfColTwo,
+        column,
+        value,
         cb
     ) {
         let query = 'INSERT INTO ?? (??, ??) ';
-        query += `VALUES ('?', ?),`;
+        query += `VALUES (?, ?),`;
         connection.query(
             query,
-            [table, colOne, colTwo, valOfColOne, valOfColTwo],
+            [table, column, value],
             function (err, result) {
                 if (err) throw err;
                 cb(result);

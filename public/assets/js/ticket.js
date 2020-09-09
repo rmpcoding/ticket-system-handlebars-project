@@ -2,8 +2,7 @@
 // alert('hi')
 // ====================================
 
-const testData = 'https://reqres.in/api/users';
-const submitBtn = document.querySelector('.btn-submit');
+// const submitBtn = document.querySelector('.btn-submit');
 const form = document.querySelector('.form');
 
 form.addEventListener('submit', function (event) {
@@ -18,6 +17,8 @@ form.addEventListener('submit', function (event) {
         object[key] = value;
     });
 
+    console.log(object)
+
     // Utilize fetch method to POST data from form to controller routes api
     fetch('/api/tickets', {
         method: 'POST',
@@ -25,8 +26,7 @@ form.addEventListener('submit', function (event) {
         body: JSON.stringify(object),
     })
         .then((res) => {
-          console.log(res)
-            return res.json();
+            return res;
         })
         .then((data) => {
             console.log("I'm in the the FETCH data");

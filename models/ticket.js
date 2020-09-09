@@ -1,10 +1,9 @@
 const orm = require('../config/orm');
 
 let table = 'ticket';
-let columnOne = 'ticket_name';
-let columnTwo = 'completed';
-let valOfColOne = 'TESSSST';
-let valOfColTwo = 'FALSE';
+let column = 'ticket_name';
+let value = 'TESSSST';
+
 
 const ticket = {
     selectAll: function (cb) {
@@ -15,10 +14,8 @@ const ticket = {
     insertOne: function (cb) {
         orm.insertOne(
             table,
-            columnOne,
-            columnTwo,
-            valOfColOne,
-            valOfColTwo,
+            column,
+            value,
             (res) => {
                 cb(res);
             }
@@ -26,7 +23,6 @@ const ticket = {
     },
 };
 
-// orm.insertOne('ticket', 'id', 'ticket_name', 'completed', 'DEFAULT');
 // Still need to insert values.
 // Need to assign three variables
 // Those variables will change every time user inputs data

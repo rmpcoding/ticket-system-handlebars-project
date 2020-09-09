@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS ticket
 (
   id INT AUTO_INCREMENT,
   ticket_name VARCHAR(150),
-  completed BOOLEAN,
+  completed BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );
