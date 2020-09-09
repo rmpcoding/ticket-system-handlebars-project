@@ -8,6 +8,7 @@ const connection = require('./connection');
 // https://en.wikipedia.org/wiki/SQL_injection
 
 const orm = {
+    // The last variable cb represents the anonymous function being passed from server.js
     selectAll: function (table, cb) {
         let query = 'SELECT * FROM ??';
         connection.query(query, [table], function (err, result) {
@@ -19,25 +20,15 @@ const orm = {
         table,
         colOne,
         colTwo,
-        colThree,
         valOfColOne,
         valOfColTwo,
-        valOfColThree,
         cb
     ) {
-        let query = 'INSERT INTO ?? (??, ??, ??) ';
-        query += `VALUES (?, '?', ?),`;
+        let query = 'INSERT INTO ?? (??, ??) ';
+        query += `VALUES ('?', ?),`;
         connection.query(
             query,
-            [
-                table,
-                colOne,
-                colTwo,
-                colThree,
-                valOfColOne,
-                valOfColTwo,
-                valOfColThree,
-            ],
+            [table, colOne, colTwo, valOfColOne, valOfColTwo],
             function (err, result) {
                 if (err) throw err;
                 cb(result);
@@ -46,8 +37,8 @@ const orm = {
     },
     updateOne: function (table, column, valOfCol, cb) {
         let query = `UPDATE ??
-                      SET ?? = ?
-                      WHERE id = ${placeholder}`;
+                     SET ?? = ?
+                     WHERE id = ${placeholder}`;
         connection.query(query, [table, column, valOfCol], function (
             err,
             result

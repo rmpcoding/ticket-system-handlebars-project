@@ -1,12 +1,28 @@
 const orm = require('../config/orm');
 
 let table = 'ticket';
+let columnOne = 'ticket_name';
+let columnTwo = 'completed';
+let valOfColOne = 'TESSSST';
+let valOfColTwo = 'FALSE';
 
 const ticket = {
     selectAll: function (cb) {
-        orm.selectAll(table, function (res) {
+        orm.selectAll(table, (res) => {
             cb(res);
         });
+    },
+    insertOne: function (cb) {
+        orm.insertOne(
+            table,
+            columnOne,
+            columnTwo,
+            valOfColOne,
+            valOfColTwo,
+            (res) => {
+                cb(res);
+            }
+        );
     },
 };
 
