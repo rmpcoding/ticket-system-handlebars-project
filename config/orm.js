@@ -22,13 +22,15 @@ const orm = {
         value,
         cb
     ) {
-        let query = 'INSERT INTO ?? (??, ??) ';
-        query += `VALUES (?, ?),`;
+        let query = 'INSERT INTO ?? (??) ';
+        query += `VALUES (?)`;
         connection.query(
             query,
             [table, column, value],
             function (err, result) {
                 if (err) throw err;
+                console.log('inside ORM')
+                // console.table(result)
                 cb(result);
             }
         );
