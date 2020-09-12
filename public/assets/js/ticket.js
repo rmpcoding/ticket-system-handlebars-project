@@ -6,7 +6,7 @@ form.addEventListener('submit', function (event) {
     // Creates new Form Data from submit event
     const formData = new FormData(event.target);
 
-    // Reveals submit value while creating key/value pairs into object
+    // Reveals submit value while adding key/value pairs into object
     let object = {};
     formData.forEach((value, key) => {
         object[key] = value;
@@ -22,8 +22,8 @@ form.addEventListener('submit', function (event) {
             return res;
         })
         .then((data) => {
-            console.log("I'm in the the FETCH data");
-            console.log(data);
-            // location.reload();
+            // quietly refreshes page to display POST data
+            location.reload();
+            return data;
         });
 });

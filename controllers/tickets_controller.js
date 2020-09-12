@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const ticket = require('../models/ticket');
-const orm = require('../config/orm');
 const { json } = require('body-parser');
+
+const app = express();
 
 // GET ROUTE
 router.get('/', (req, res) => {
@@ -31,6 +32,7 @@ router.post('/api/tickets', function (req, res) {
         );
         res.json();
     });
+
 });
 // PUT ROUTE
 // DELETE ROUTE

@@ -30,7 +30,6 @@ const orm = {
             function (err, result) {
                 if (err) throw err;
                 console.log('inside ORM')
-                // console.table(result)
                 cb(result);
             }
         );
@@ -47,6 +46,7 @@ const orm = {
             cb(result);
         });
     },
+    // deleteOne: function (table, column, value, cb)
 };
 
 module.exports = orm;
