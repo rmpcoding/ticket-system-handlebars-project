@@ -32,7 +32,6 @@ router.post('/api/tickets', function (req, res) {
         );
         res.json();
     });
-
 });
 // PUT ROUTE
 // DELETE ROUTE

@@ -1,19 +1,34 @@
 {{!-- testing handlebars by way of hello world --}}
-<p class="paragraph">hello Handlebars.js world</p>
 
-<ul class="unordered-list">
+{{!-- <ul class="unordered-list">
   {{#each tickets}}
   <p>{{this.id}}</p>
   <p>{{this.ticket_name}}</p>
   <p>If you see a "0", then that means false: <span>{{this.completed}}</span></p>
   {{/each}}
-</ul>
+</ul> --}}
 
 
-<form class="form" action="/api/tickets" method="POST">
-  <div class="form-group">
-    <label class="label" for="ticket_name">Describe Issue:</label>
-  </div>
+
+
+
+
+
+<section class="section">
+  <header class="header__landing-page">
+    <h1 class="section__title">Ticket Issuing System</h1>
+    <h3 class="section__title section__subtitle">Click the button to use the app</h3>
+    <button class="btn">Click Me</button>
+  </header>
+</section>
+
+<section class="section">
+  <form class="form" action="/api/tickets" method="POST">
+    <div class="form-group">
+      <label class="label" for="ticket_name">Describe Issue:</label>
+    </div>
     <input class="form-input" type="text" id="ticket_name" name="ticket_name" /><br /><br />
     <input class="btn btn-primary" type="submit" value="Submit" />
-</form>
+  </form>
+
+</section>
