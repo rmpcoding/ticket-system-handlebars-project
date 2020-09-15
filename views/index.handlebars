@@ -1,12 +1,5 @@
 {{!-- testing handlebars by way of hello world --}}
 
-{{!-- <ul class="unordered-list">
-  {{#each tickets}}
-  <p>{{this.id}}</p>
-  <p>{{this.ticket_name}}</p>
-  <p>If you see a "0", then that means false: <span>{{this.completed}}</span></p>
-  {{/each}}
-</ul> --}}
 
 
 
@@ -14,7 +7,8 @@
 
 
 
-<section class="section">
+
+<section>
   <header class="header__landing-page">
     <h1 class="section__title">Ticket Issuing System</h1>
     <h3 class="section__title section__subtitle">Click the button to use the app</h3>
@@ -22,13 +16,44 @@
   </header>
 </section>
 
-<section class="section">
-  <form class="form" action="/api/tickets" method="POST">
-    <div class="form-group">
-      <label class="label" for="ticket_name">Describe Issue:</label>
-    </div>
-    <input class="form-input" type="text" id="ticket_name" name="ticket_name" /><br /><br />
-    <input class="btn btn-primary" type="submit" value="Submit" />
-  </form>
+<main>
 
-</section>
+  <section class="section">
+    <form class="form" action="/api/tickets" method="POST">
+      <div class="form-group">
+        <label class="label" for="ticket_name">Describe Issue:</label>
+      </div>
+      <input class="form-input" type="text" id="ticket_name" name="ticket_name" /><br /><br />
+      <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+  </section>
+
+  <section class="section">
+    <div class="grid-container">
+      <div class="grid-container-item">
+        <ul class="list">
+          {{#each tickets}}
+          <p>{{this.id}}. 
+            <span>{{this.ticket_name}}</span> 
+              <span> 
+                <button class="btn btn-complete">Completed?
+                </button>
+            </span>
+          </p> 
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="grid-container-item">
+        <ul class="list completed-list">
+          <p>
+          </p>
+        </ul>
+      </div>
+    </div>
+
+
+
+  </section>
+
+</main>

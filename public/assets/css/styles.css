@@ -17,6 +17,7 @@ background-color: #6a66a3;
 
 body {
     margin: 0;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 .header__landing-page {
@@ -36,16 +37,18 @@ body {
     color: white;
     text-align: center;
     font-size: 3rem;
+    font-weight: 300;
 }
 
 .section__title.section__subtitle {
     margin-top: .5rem;
+    margin-bottom: .5rem;
     font-size: small;
 }
 
 .btn {
     outline: none;
-    background-color: #a4cded;
+    background-color:hsl(206, 67%, 59%);
     border: 1px solid #001021;
     border-radius: 1000000px;
     color: white;
@@ -56,8 +59,39 @@ body {
 
 .btn:hover,
 .btn:focus {
-    background-color: hsl(206, 67%, 59%);
+    background-color: hsl(206, 67%, 69%);
 }
 
+.btn:focus {
+    border: 1px solid hsl(206, 57%, 59%);
+}
 
+.section {
+    padding: 2em;
+}
 
+.form {
+    text-align: center;
+}
+
+.form-input {
+    border: 1px solid black;
+    border-radius: 1000000px;
+    outline: none;
+}
+
+.btn-complete {
+    display: flex;
+    justify-content: end;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(auto, 400px));
+    justify-content: center;
+}
+
+.grid-container-item {
+    display: flex;
+    justify-content: center;
+}
