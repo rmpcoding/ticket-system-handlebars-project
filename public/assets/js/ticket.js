@@ -27,3 +27,13 @@ form.addEventListener('submit', function (event) {
             return data;
         });
 });
+
+const deleteButton = document.querySelectorAll('.btn-complete')
+
+deleteButton.forEach(button => {
+    button.addEventListener('click', (event) => {
+        console.log('hitting it from the front')
+        
+
+    })
+})

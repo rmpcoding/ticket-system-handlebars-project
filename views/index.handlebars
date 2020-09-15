@@ -33,27 +33,44 @@
       <div class="grid-container-item">
         <ul class="list">
           {{#each tickets}}
+          {{#unless this.completed}}
           <p>{{this.id}}. 
             <span>{{this.ticket_name}}</span> 
               <span> 
                 <button class="btn btn-complete">Completed?
                 </button>
             </span>
-          </p> 
+          </p>
+          {{/unless}}
           {{/each}}
         </ul>
       </div>
 
       <div class="grid-container-item">
         <ul class="list completed-list">
-          <p>
-          </p>
+          {{!-- not sure if this gonna work. may need to change it. --}}
+          {{#each tickets}}
+          {{#if this.completed}}
+
+          <p>{{this.id}}. 
+            <span>{{this.ticket_name}}</span> 
+              <span> 
+                <button class="btn btn-delete">Delete
+                </button>
+            </span>
+          </p> 
+
+          {{/if}}
+          {{/each}}
         </ul>
       </div>
     </div>
-
-
-
   </section>
 
 </main>
+
+<footer class="section footer">
+  <nav class="nav">
+    hello world
+  </nav>
+</footer>

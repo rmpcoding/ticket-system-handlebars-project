@@ -80,7 +80,8 @@ body {
     outline: none;
 }
 
-.btn-complete {
+.btn-complete,
+.btn-delete {
     display: flex;
     justify-content: end;
 }
@@ -94,4 +95,21 @@ body {
 .grid-container-item {
     display: flex;
     justify-content: center;
+}
+
+.footer {
+    /* background-color: #db222a; */
+    /* background-color: #b5ffe1; */
+
+    /* background-color: #eda4bd; */
+    background-color: #001021;
+    background-color: hsl(232, 36%, 8%);
+    /* background-color: #6a66a3; */
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }

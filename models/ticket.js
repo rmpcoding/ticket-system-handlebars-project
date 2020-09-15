@@ -19,6 +19,12 @@ const ticket = {
             }
         );
     },
+    deleteOne: function(table, column, value, cb) {
+        orm.deleteOne(table, column, value, (res) => {
+            console.log('inside ticket.deleteOne MODELS script');
+            cb(res);
+        })
+    }
 };
 
 // Still need to insert values.
