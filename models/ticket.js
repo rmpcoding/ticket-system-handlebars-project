@@ -1,5 +1,7 @@
 const orm = require('../config/orm');
 
+const table = 'ticket'
+
 const ticket = {
     selectAll: function (cb) {
         orm.selectAll(table, (res) => {

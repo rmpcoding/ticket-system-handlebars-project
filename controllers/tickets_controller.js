@@ -6,7 +6,6 @@ const app = express();
 
 let table = 'ticket';
 
-
 // GET ROUTE
 router.get('/', (req, res) => {
     ticket.selectAll((data) => {
