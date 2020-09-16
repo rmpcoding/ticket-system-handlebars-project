@@ -5,12 +5,12 @@ const { json } = require('body-parser');
 
 const app = express();
 
+let table = 'ticket';
+
+
 // GET ROUTE
 router.get('/', (req, res) => {
     ticket.selectAll((data) => {
-        // console.log('======================================')
-        // console.log(data)
-        // console.log('======================================')
         let hbsObj = {
             tickets: data,
         };
@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
 router.post('/api/tickets', function (req, res) {
     console.log('inside router.post in controller.js FIRST ONE');
 
-    let table = 'ticket';
     let column = 'ticket_name';
     let value = req.body.ticket_name;
 
@@ -33,7 +32,20 @@ router.post('/api/tickets', function (req, res) {
         res.json();
     });
 });
+
 // PUT ROUTE
+
 // DELETE ROUTE
+router.delete('/api/tickets/:id', (req, res) => {
+    console.log(req.body)
+    let column = 'id';
+    let value = parseInt(req.params.id);
+    
+    ticket.deleteOne(table, column, value, (data) => {
+        console.log('CONTROLLER ticket.deleteOne: backend delete talkin')
+        console.log(data)
+        res.json();
+    })
+})
 
 module.exports = router;

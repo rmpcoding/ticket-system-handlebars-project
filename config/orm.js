@@ -8,53 +8,43 @@ const connection = require('./connection');
 // https://en.wikipedia.org/wiki/SQL_injection
 
 const orm = {
-    // The last variable cb represents the anonymous function being passed from server.js
     selectAll: function (table, cb) {
         let query = `SELECT * FROM ??`;
         connection.query(query, [table], function (err, result) {
             if (err) throw err;
-            console.table(result)
             cb(result);
         });
     },
-    insertOne: function (
-        table,
-        column,
-        value,
-        cb
-    ) {
-        let query  = `INSERT INTO ?? (??) `;
-            query += `VALUES (?)`;
-        connection.query(
-            query,
-            [table, column, value],
-            function (err, result) {
-                if (err) throw err;
-                console.log('inside ORM')
-                cb(result);
-            }
-        );
+    insertOne: function (table, column, value, cb) {
+        let query = `INSERT INTO ?? (??) `;
+        query += `VALUES (?)`;
+        connection.query(query, [table, column, value], function (err, result) {
+            if (err) throw err;
+            console.log('inside ORM');
+            cb(result);
+        });
     },
     updateOne: function (table, column, valOfCol, cb) {
         let query = `UPDATE ??
                      SET ?? = ?
-                     WHERE id = ${placeholder}`;
-        connection.query(query, [table, column, valOfCol], function (err, result) {
+                     WHERE id = ?`;
+        connection.query(query, [table, column, valOfCol], function (
+            err,
+            result
+        ) {
             if (err) throw err;
             cb(result);
         });
     },
 
-    deleteOne: function(table, column, value, cb) {
-        let query =  `DELETE FROM ??`
-            query += `WHERE ?? = ?;`
-        connection.connect(query, [table, column, value], function (err, result) {
+    deleteOne: function (table, column, value, cb) {
+        let query = `DELETE FROM ?? `;
+        query += `WHERE ?? = ?`;
+        connection.query(query, [table, column, value], function (err, result) {
             if (err) throw err;
-            console.log('deleted... coming from ORM');
-            cb(result)
-        })
-    }
-
+            cb(result);
+        });
+    },
 };
 
 module.exports = orm;

@@ -75,15 +75,21 @@ body {
 }
 
 .form-input {
+    margin-top: 1rem;
     border: 1px solid black;
     border-radius: 1000000px;
     outline: none;
 }
 
 .btn-complete,
+.btn-send,
 .btn-delete {
     display: flex;
     justify-content: end;
+}
+
+.btn-delete {
+    background-color: #eda4bd;
 }
 
 .grid-container {

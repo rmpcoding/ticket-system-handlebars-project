@@ -37,7 +37,7 @@
           <p>{{this.id}}. 
             <span>{{this.ticket_name}}</span> 
               <span> 
-                <button class="btn btn-complete">Completed?
+                <button class="btn btn-send">Send
                 </button>
             </span>
           </p>
@@ -48,19 +48,16 @@
 
       <div class="grid-container-item">
         <ul class="list completed-list">
-          {{!-- not sure if this gonna work. may need to change it. --}}
           {{#each tickets}}
-          {{#if this.completed}}
-
-          <p>{{this.id}}. 
-            <span>{{this.ticket_name}}</span> 
-              <span> 
-                <button class="btn btn-delete">Delete
-                </button>
-            </span>
-          </p> 
-
-          {{/if}}
+            {{#if this.completed}}
+            <p class="item" data-id={{this.id}}>{{this.id}}. 
+              <span>{{this.ticket_name}}</span> 
+                <span> 
+                  <button class="btn btn-delete">Complete
+                  </button>
+              </span>
+            </p> 
+            {{/if}}
           {{/each}}
         </ul>
       </div>
