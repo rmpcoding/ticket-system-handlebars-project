@@ -22,3 +22,4 @@ app.listen(PORT, () => {
         `Handlebars Ticket App is now listening on local host: ${PORT}`
     );
 });
+
