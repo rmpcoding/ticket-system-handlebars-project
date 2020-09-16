@@ -1,9 +1,9 @@
 USE tickets_db;
 
 INSERT INTO ticket (id, ticket_name, completed)
-  VALUES (DEFAULT, 'Check your morning emails', DEFAULT),
-         (DEFAULT, 'Drink your morning coffee', DEFAULT),
-         (DEFAULT, 'Have your morning donut', DEFAULT);
+  VALUES (DEFAULT, 'Hello World is not displaying correctly', DEFAULT),
+         (DEFAULT, 'ORM is not sending a callback', DEFAULT),
+         (DEFAULT, 'Handlebars not rendering properly', DEFAULT);
          
 SELECT *
 FROM ticket
