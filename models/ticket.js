@@ -1,7 +1,5 @@
 const orm = require('../config/orm');
 
-let table = 'ticket';
-
 const ticket = {
     selectAll: function (cb) {
         orm.selectAll(table, (res) => {
@@ -10,7 +8,11 @@ const ticket = {
     },
     insertOne: function (table, column, value, cb) {
         orm.insertOne(table, column, value, (res) => {
-            console.log('inside ticket.insertOne MODELS script');
+            cb(res);
+        });
+    },
+    updateOne: function (table, columnOne, valOfColOne, columnTwo, valOfColTwo, cb) {
+        orm.updateOne(table, columnOne, valOfColOne, columnTwo, valOfColTwo, (res) => {
             cb(res);
         });
     },

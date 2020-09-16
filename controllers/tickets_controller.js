@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ticket = require('../models/ticket');
-const { json } = require('body-parser');
 
 const app = express();
 
@@ -20,30 +19,32 @@ router.get('/', (req, res) => {
 
 // POST ROUTE
 router.post('/api/tickets', function (req, res) {
-    console.log('inside router.post in controller.js FIRST ONE');
-
     let column = 'ticket_name';
     let value = req.body.ticket_name;
 
     ticket.insertOne(table, column, value, (data) => {
-        console.log(
-            'inside ticket.insertOne function in CONTROLLER router.post function'
-        );
         res.json();
     });
 });
 
 // PUT ROUTE
+router.put('/api/tickets/:id', (req, res) => {
+    let columnOne = 'completed';
+    let columnTwo = 'id'
+    let valOfColOne = true;
+    let valOfColTwo = parseInt(req.params.id);
+
+    ticket.updateOne(table, columnOne, valOfColOne, columnTwo, valOfColTwo, (data) => {
+        res.json();
+    })
+})
 
 // DELETE ROUTE
 router.delete('/api/tickets/:id', (req, res) => {
-    console.log(req.body)
     let column = 'id';
     let value = parseInt(req.params.id);
     
     ticket.deleteOne(table, column, value, (data) => {
-        console.log('CONTROLLER ticket.deleteOne: backend delete talkin')
-        console.log(data)
         res.json();
     })
 })

@@ -20,23 +20,29 @@ const orm = {
         query += `VALUES (?)`;
         connection.query(query, [table, column, value], function (err, result) {
             if (err) throw err;
-            console.log('inside ORM');
             cb(result);
         });
     },
-    updateOne: function (table, column, valOfCol, cb) {
-        let query = `UPDATE ??
-                     SET ?? = ?
-                     WHERE id = ?`;
-        connection.query(query, [table, column, valOfCol], function (
-            err,
-            result
-        ) {
-            if (err) throw err;
-            cb(result);
-        });
+    updateOne: function (
+        table,
+        columnOne,
+        valOfColOne,
+        columnTwo,
+        valOfColTwo,
+        cb
+    ) {
+        let query = `UPDATE ?? `;
+        query += `SET ?? = ? `;
+        query += `WHERE ?? = ?`;
+        connection.query(
+            query,
+            [table, columnOne, valOfColOne, columnTwo, valOfColTwo],
+            function (err, result) {
+                if (err) throw err;
+                cb(result);
+            }
+        );
     },
-
     deleteOne: function (table, column, value, cb) {
         let query = `DELETE FROM ?? `;
         query += `WHERE ?? = ?`;
