@@ -1,5 +1,8 @@
 const mysql = require('mysql');
 require('dotenv').config();
+const parseDbUrl = require("parse-database-url");
+
+const dbConfig = parseDbUrl(process.env["CLEARDB_DATABASE_URL"]);
 
 const connection = mysql.createPool({
     connectionLimit: 5,
