@@ -2,7 +2,7 @@ const mysql = require('mysql');
 require('dotenv').config();
 
 
-const connection = mysql.createPool({
+const pool = mysql.createPool({
     connectionLimit: 5,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -10,12 +10,12 @@ const connection = mysql.createPool({
     database: process.env.DB,
 });
 
-connection.getConnection(function (err) {
+pool.getConnection(function (err) {
     if (err) {
         console.log(`There was an error connecting: ${err.stack}`);
         return;
     }
-    console.log(`Connected as id ${connection.threadId}`);
+    console.log(`Connected as id ${pool.threadId}`);
 });
 
-module.exports = connection;
+module.exports = pool;
