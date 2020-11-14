@@ -1,9 +1,11 @@
 const mysql = require('mysql');
 require('dotenv').config();
 let pool;
+let connection;
 
 if (process.env.CLEARDB_DATABASE_URL) {
-    pool = mysql.createConnection(process.env.CLEARDB_DATABASE_URL)
+    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+    connection.connect();
 } else {
     pool = mysql.createPool({
         connectionLimit: 5,
@@ -12,16 +14,13 @@ if (process.env.CLEARDB_DATABASE_URL) {
         password: process.env.DB_PW,
         database: process.env.DB,
     });
+    pool.getConnection(function (err) {
+        if (err) {
+            console.log(`There was an error connecting: ${err.stack}`);
+        }
+        console.log(`Connected as id ${pool.threadId}`);
+    });
 }
 
-// pool.getConnection();
-pool.connect();
-
-// pool.getConnection(function (err) {
-//     if (err) {
-//         console.log(`There was an error connecting: ${err.stack}`);
-//     }
-//     console.log(`Connected as id ${pool.threadId}`);
-// });
 
 module.exports = pool;
