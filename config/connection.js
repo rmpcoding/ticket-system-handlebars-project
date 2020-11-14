@@ -14,13 +14,14 @@ if (process.env.CLEARDB_DATABASE_URL) {
     });
 }
 
+// pool.getConnection();
+pool.connect();
 
-pool.getConnection(function (err) {
-    if (err) {
-        console.log(`There was an error connecting: ${err.stack}`);
-        return;
-    }
-    console.log(`Connected as id ${pool.threadId}`);
-});
+// pool.getConnection(function (err) {
+//     if (err) {
+//         console.log(`There was an error connecting: ${err.stack}`);
+//     }
+//     console.log(`Connected as id ${pool.threadId}`);
+// });
 
 module.exports = pool;

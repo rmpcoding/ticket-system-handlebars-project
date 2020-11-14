@@ -3,6 +3,8 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const routes = require('./controllers/tickets_controller');
 
+console.log('HELLLOOOOOO!')
+
 // const parseDbUrl = require("parse-database-url");
 
 // const dbConfig = parseDbUrl(process.env["CLEARDB_DATABASE_URL"]);
