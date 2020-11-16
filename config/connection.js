@@ -8,7 +8,7 @@ const handleDisconnect = () => {
     connection.connect((err) => {
         if (err) {
             console.log(`There was an error: ${err}`);
-            setTimeout(handleDisconnect(), 10000);
+            setTimeout(handleDisconnect(), 1000);
         }
         connection.on('error', (err) => {
             console.log(`Database Error: ${err}`);
