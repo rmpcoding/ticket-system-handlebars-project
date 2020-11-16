@@ -2,7 +2,6 @@ const mysql = require('mysql');
 require('dotenv').config();
 let connection;
 
-
 const handleDisconnect = () => {
     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
     connection.connect((err) => {
@@ -12,16 +11,13 @@ const handleDisconnect = () => {
         }
         connection.on('error', (err) => {
             console.log(`Database Error: ${err}`);
+            handleDisconnect();
             if (err.code === 'PROTOCOL_CONNECTION_LOST') {
                 handleDisconnect();
             } else throw err;
-        })
-    })
-}
-
-
-
-
+        });
+    });
+};
 
 if (process.env.CLEARDB_DATABASE_URL) {
     // connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
@@ -42,6 +38,5 @@ if (process.env.CLEARDB_DATABASE_URL) {
         console.log(`Connected as id ${connection.threadId}`);
     });
 }
-
 
 module.exports = connection;
