@@ -5,7 +5,7 @@ let connection;
 
 const handleDisconnect = () => {
     connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
-    connection.connect(() => {
+    connection.connect((err) => {
         if (err) {
             console.log(`There was an error: ${err}`);
             setTimeout(handleDisconnect(), 10000);
