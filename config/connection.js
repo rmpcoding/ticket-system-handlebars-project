@@ -3,7 +3,7 @@ require('dotenv').config();
 let connection;
 
 const handleDisconnect = () => {
-    connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
     connection.connect((err) => {
         if (err) {
             console.log(`There was an error: ${err}`);
@@ -11,7 +11,6 @@ const handleDisconnect = () => {
         }
         connection.on('error', (err) => {
             console.log(`Database Error: ${err}`);
-            handleDisconnect();
             if (err.code === 'PROTOCOL_CONNECTION_LOST') {
                 handleDisconnect();
             } else throw err;
@@ -19,9 +18,7 @@ const handleDisconnect = () => {
     });
 };
 
-if (process.env.CLEARDB_DATABASE_URL) {
-    // connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
-    // connection.connect();
+if (process.env.JAWSDB_URL) {
     handleDisconnect();
 } else {
     connection = mysql.createPool({
