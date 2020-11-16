@@ -10,6 +10,9 @@ const handleDisconnect = () => {
             console.log(`There was an error: ${err}`);
             setTimeout(handleDisconnect(), 1000);
         }
+        if (err.fatal) {
+            connection.connect();
+        }
         connection.on('error', (err) => {
             console.log(`Database Error: ${err}`);
             if (err.code === 'PROTOCOL_CONNECTION_LOST') {
